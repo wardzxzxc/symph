@@ -1,8 +1,6 @@
-from typing import Optional
 from fastapi import APIRouter, Depends
 
-from src.routers import deps
-
+from symph.routers import deps
 
 router = APIRouter()
 

@@ -1,6 +1,6 @@
 from celery import Celery
 
-from src.services.inspector import Inspector
+from symph.services.inspector import Inspector
 
 celery_app = Celery(broker="pyamqp://127.0.0.1:5672")
 
