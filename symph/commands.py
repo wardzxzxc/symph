@@ -2,14 +2,6 @@ import click
 
 
 @click.group(name="symph")
-@click.option(
-    "--verbose",
-    "-v",
-    is_flag=True,
-    show_default=True,
-    default=False,
-    help="Option to run in verbose mode",
-)
 def cli():
     """FastAPI webserver to orchestrate Celery workflows."""
     pass
@@ -28,6 +20,8 @@ def cli():
     required=True,
     help="The port that Symph runs on, e.g 8000",
 )
-def run():
+def run(broker_url, port):
     """Run FastAPI webserver"""
+    click.echo(broker_url)
+    click.echo(port)
     click.echo("Initialized the database")
