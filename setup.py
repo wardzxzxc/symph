@@ -29,7 +29,7 @@ setup(
     description="A FastAPI webserver to orchestrate Celery workflows",
     long_description=open("README.md").read(),
     entry_points={
-        "console_scripts": [f"{name} = {name}.commands:cli"],
+        "console_scripts": [f"{name} = {name}.cli:symph"],
     },
     python_requires=">=3.8",
     packages=find_packages(exclude=["tests", "tests.*"]),
