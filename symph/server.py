@@ -7,6 +7,7 @@ from fastapi.middleware.cors import CORSMiddleware
 from kombu import exceptions as kombu_exc
 from watchgod import run_process
 
+from symph import database, models
 from symph.routers import deps
 from symph.routers.v1.api import api_router
 
@@ -17,7 +18,9 @@ def _create_server(broker_url: str) -> FastAPI:
         try:
             celery_app.control.ping()
         except kombu_exc.OperationalError:
-            raise ValueError("broker_url is incorrect")
+            raise ValueError("broker_url is incorrect. connection invalid.")
+
+        models.Base.metadata.create_all(bind=database.engine)
 
         app.dependency_overrides[deps.get_celery_app] = lambda: celery_app
 
