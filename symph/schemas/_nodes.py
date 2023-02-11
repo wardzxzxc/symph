@@ -4,7 +4,7 @@ from pydantic import BaseModel
 
 
 class NodeCreate(BaseModel):
-    number: int
+    key: int
     name: str
 
 

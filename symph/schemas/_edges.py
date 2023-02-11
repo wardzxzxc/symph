@@ -4,8 +4,8 @@ from pydantic import BaseModel
 
 
 class EdgeCreate(BaseModel):
-    src_number: int
-    target_number: int
+    src_key: int
+    target_key: int
 
 
 class EdgesCreate(BaseModel):
