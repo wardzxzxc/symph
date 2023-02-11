@@ -2,6 +2,6 @@ from sqlalchemy.orm import declarative_base
 
 Base = declarative_base()
 
-from .edges import Edge  # noqa
-from .nodes import Node  # noqa
-from .workflows import Workflow  # noqa
+from ._edges import Edge  # noqa
+from ._nodes import Node  # noqa
+from ._workflows import Workflow  # noqa

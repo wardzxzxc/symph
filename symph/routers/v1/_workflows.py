@@ -14,3 +14,14 @@ def create_workflow_for_worker(
 ):
     crud.workflows.create(s, obj_in=workflow)
     return "workflow created"
+
+
+@router.post("/{worker_name}/{workerflow_id}", status_code=status.HTTP_200_OK)
+def start_workflow(
+    worker_name: str,
+    workflow_id: str,
+    s: orm.Session = Depends(deps.get_db),
+):
+    workflow = crud.workflows.get(s, id=workflow_id)
+    print(workflow.nodes[1].__dict__)
+    print(workflow.nodes[1].source_nodes())

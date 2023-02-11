@@ -1,7 +1,7 @@
 from sqlalchemy import Column, ForeignKey, Integer, orm
 
 from . import Base
-from .nodes import Node
+from ._nodes import Node
 
 
 class Edge(Base):
