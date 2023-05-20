@@ -1,4 +1,4 @@
-from typing import Dict
+from typing import Dict, Optional
 
 from fastapi.encoders import jsonable_encoder
 from sqlalchemy import orm
@@ -29,3 +29,6 @@ class CRUDWorkflows:
         s.commit()
         s.refresh(db_obj)
         return db_obj
+
+    def get(self, s: orm.Session, id: int) -> Optional[models.Workflow]:
+        return s.query(self.model).filter(self.model.id == id).first()
