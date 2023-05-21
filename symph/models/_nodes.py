@@ -13,7 +13,7 @@ class Node(Base):
     workflow_id = Column(Integer, ForeignKey("workflows.id"))
 
     def source_nodes(self):
-        return [x for x in self.target_edges]
+        return [x.src_node if x else x for x in self.target_edges]
 
     def target_nodes(self):
-        return [x for x in self.src_edges]
+        return [x.target_node if x else x for x in self.source_edges]

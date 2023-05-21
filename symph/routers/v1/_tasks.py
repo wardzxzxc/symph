@@ -12,7 +12,7 @@ async def get_tasks_all_workers(celery_app: Celery = Depends(deps.get_celery_app
     return celery_app.control.inspect(destination=None).registered()
 
 
-@router.get("/{worker_name}")
+@router.get("/{worker-name}")
 async def get_tasks_by_worker_name(
     worker_name: str, celery_app: Celery = Depends(deps.get_celery_app)
 ):
