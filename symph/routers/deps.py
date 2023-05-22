@@ -1,6 +1,6 @@
 from typing import Generator
 
-from ..database import session
+from symph.database import engine
 
 
 # this dep will be overriden at startup
@@ -9,7 +9,7 @@ def get_celery_app():
 
 
 def get_db() -> Generator:
-    local_session = session()
+    local_session = engine.session()
     try:
         yield local_session
     finally:

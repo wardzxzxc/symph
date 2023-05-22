@@ -1,14 +1,14 @@
 from sqlalchemy import Column, ForeignKey, Integer, orm
 
-from . import Base
+from symph.database.base_class import Base
+
 from ._nodes import Node
 
 
 class Edge(Base):
-    __tablename__ = "edges"
-    src_id = Column(Integer, ForeignKey("nodes.id"), primary_key=True)
+    src_id = Column(Integer, ForeignKey("node.id"), primary_key=True)
 
-    target_id = Column(Integer, ForeignKey("nodes.id"), primary_key=True)
+    target_id = Column(Integer, ForeignKey("node.id"), primary_key=True)
 
     src_node = orm.relationship(
         Node, primaryjoin=src_id == Node.id, backref="source_edges"
@@ -18,7 +18,7 @@ class Edge(Base):
         Node, primaryjoin=target_id == Node.id, backref="target_edges"
     )
 
-    workflow_id = Column(Integer, ForeignKey("workflows.id"))
+    workflow_id = Column(Integer, ForeignKey("workflow.id"))
 
     def __init__(self, src_node: Node, target_node: Node):
         self.src_node = src_node
